@@ -59,8 +59,8 @@
                <td>{{ order.products.category }}</td>
                <td>{{ order.Status }}</td>
                <td>{{ order.date_created }}</td>
-               <td><a href="">Update</a></td>
-               <td><a href="">Delete</a></td>
+               <td><a href="{% url 'updateorder' order.id %}">Update</a></td>
+               <td><a href="{% url 'deleteorder' order.id %}">Delete</a></td>
             </tr>
             {% endfor %}
          </table>
