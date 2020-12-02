@@ -1,0 +1,77 @@
+{% extends 'accounts/base.html' %}
+{% block css%}
+<style>
+    body{
+        background-color: #ebeff5;
+    }
+    #total-orders{
+        background-color: blue;
+    }
+    #orders-delivered{
+        background-color: darkblue;
+    }
+    #orders-pending{
+        background-color: lightblue;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<br>
+<br>
+{% include 'accounts/status.html' %}
+
+
+<h1 class="mt-2 mb-5"> Customer Dashboard</h1>
+
+<hr>
+<div class="row ml-2">
+    <div class="col-md-5">
+        <h5>Customers:</h5>
+        <hr>
+        <div class="card card-body">
+            <a href="" class="btn btn-primary form-control">Create Customer</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                </tr>
+                {% for i in customers %}
+                <tr>
+                    <td><a href="{% url 'customer' i.id %}" class="btn btn-sm btn-info">view</a></td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.phone}}</td>
+                   
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h5>Last five order produtcts</h5>
+        <hr>
+        <div class="card card-body">
+            <a href="" class="btn btn-primary form-control">Create order</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>status</th>
+                    <th>UPDATE</th>
+                    <th>Remove</th>
+                </tr>
+                {% for i in orders %}
+                <tr>
+                    <td>{{i.products}}</td>
+                    <td>{{i.date_created}}</td>
+                    <td>{{i.Status}}</td>
+                    <td><a href="">Update</a></td>
+                    <td><a href="">Delete</a></td>
+                   
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
